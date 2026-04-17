@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import dumbells from "../assets/dumbells.png";
+import postpartum from "../assets/postpartum.png";
 
 const Blog = () => {
   const [filter, setFilter] = useState('All');
@@ -18,14 +20,14 @@ const Blog = () => {
       category: 'Postpartum',
       title: 'Healing Diastasis Recti: Where to Start?',
       excerpt: 'Postpartum core healing requires patience and the right exercises. Avoid these common mistakes new moms make.',
-      image: 'https://images.unsplash.com/photo-1531983412534-754605e5d36e?auto=format&fit=crop&w=600&q=80'
+      image: postpartum
     },
     {
       id: 3,
       category: 'Home Workouts',
       title: 'Dumbbells vs Bodyweight: Which is Better?',
       excerpt: 'Do you really need weights to tone up? We break down the science behind minimal equipment resistance training.',
-      image: 'https://images.unsplash.com/photo-1598289431512-b97b0917effc?auto=format&fit=crop&w=600&q=80'
+      image: dumbells
     },
     {
       id: 4,
@@ -51,7 +53,7 @@ const Blog = () => {
 
       <section className="section-padding">
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
             {categories.map(cat => (
               <button 
                 key={cat} 
@@ -64,7 +66,30 @@ const Blog = () => {
             ))}
           </div>
 
-          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div className="mobile-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+            <select 
+              value={filter} 
+              onChange={(e) => setFilter(e.target.value)}
+              style={{
+                width: '100%',
+                maxWidth: '400px',
+                padding: '0.8rem 1.2rem',
+                fontSize: '1rem',
+                borderRadius: '8px',
+                border: '1px solid var(--color-primary)',
+                background: 'white',
+                color: 'var(--color-dark)',
+                outline: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              {categories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
             {filteredPosts.map(post => (
               <div key={post.id} className="card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'relative', paddingTop: '60%', overflow: 'hidden' }}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Camera, Clock, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const ProgramCard = ({ title, duration, image, description, includes, recommended, price }) => {
+const ProgramCard = ({ title, duration, image, description, includes, recommended, onViewDetails }) => {
   return (
     <div className="card program-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', position: 'relative' }}>
       {recommended && (
@@ -34,9 +34,12 @@ const ProgramCard = ({ title, duration, image, description, includes, recommende
           </ul>
         </div>
         
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-          {price && <div style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--color-dark)' }}>{price}</div>}
-          <Link to="/programs" className="btn btn-primary" style={{ width: price ? 'auto' : '100%' }}>Enroll Now</Link>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 'auto' }}>
+          {onViewDetails ? (
+            <button onClick={onViewDetails} className="btn btn-primary" style={{ width: '100%', border: 'none' }}>View Details</button>
+          ) : (
+            <Link to="/programs" className="btn btn-primary" style={{ width: '100%' }}>View Details</Link>
+          )}
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ const Programs = () => {
       description: "Our most popular program. Kickstart your metabolism with quick, highly effective daily home workouts.",
       includes: ["Daily video workouts", "Custom diet plan PDF", "Progress tracker", "WhatsApp Community"],
       price: "₹1,499",
-      image: "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?auto=format&fit=crop&w=600&q=80",
+      image: "https://cdn.muscleandstrength.com/sites/default/files/fit_woman_doing_dumbbell_workout.jpg",
       recommended: true
     },
     {
@@ -61,19 +61,16 @@ const Programs = () => {
     <div style={{ backgroundColor: '#FFF0F5', minHeight: '100vh', paddingBottom: '5rem' }}>
       <section className="section-padding dark-section" style={{ textAlign: 'center', minHeight: '30vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Choose Your Transformation Program</h1>
-          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.8)' }}>Select the program that fits your goals. Start instantly.</p>
+          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', marginBottom: '1rem', lineHeight: '1.2' }}>Choose Your Transformation Program</h1>
+          <p style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', color: 'rgba(255,255,255,0.8)' }}>Select the program that fits your goals. Start instantly.</p>
         </div>
       </section>
 
-      <section className="container" style={{ marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
+      <section className="container" style={{ marginTop: '3rem' }}>
         <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {programsData.map(prog => (
-            <div key={prog.id} onClick={() => setSelectedProgram(prog)} style={{ cursor: 'pointer' }}>
-              <ProgramCard {...prog} price={undefined} />
-              <div className="btn btn-outline" style={{ display: 'block', textAlign: 'center', marginTop: '-4rem', background: 'var(--color-primary)', color: 'white', position: 'relative', zIndex: 5, borderRadius: '0 0 16px 16px', borderTopLeftRadius: 0, borderTopRightRadius: 0, border: 'none' }}>
-                View & Enroll ({prog.price})
-              </div>
+            <div key={prog.id} style={{ height: '100%' }}>
+              <ProgramCard {...prog} onViewDetails={() => setSelectedProgram(prog)} />
             </div>
           ))}
         </div>
@@ -103,20 +100,7 @@ const Programs = () => {
                 <li style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}><MessageCircle color="var(--color-primary)" /> WhatsApp Community Access</li>
               </ul>
 
-              <div style={{ borderTop: '1px solid #F48FB1', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <div style={{ fontSize: '0.9rem', color: '#2D0A1E' }}>One-time payment</div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: 'var(--color-dark)' }}>{selectedProgram.price}</div>
-                </div>
-                <button 
-                  onClick={handleMockRazorpay}
-                  disabled={isPaying}
-                  className="btn btn-primary" 
-                  style={{ display: 'flex', gap: '0.5rem', padding: '1rem 2rem', fontSize: '1.1rem' }}
-                >
-                  <Lock size={18} /> {isPaying ? 'Processing...' : 'Pay with Razorpay'}
-                </button>
-              </div>
+
             </div>
           </div>
         </div>
