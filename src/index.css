@@ -8,7 +8,7 @@
   --color-accent: rgba(255, 106, 0, 0.15);
   --color-text: #333333;
   --color-white: #FFFFFF;
-  
+
   --radius-card: 16px;
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
   --shadow-hover: 0 10px 30px rgba(255, 106, 0, 0.25);
@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -34,7 +35,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
   text-transform: uppercase;
   color: var(--color-dark);
@@ -126,7 +132,7 @@ ul {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 /* Header & Footer */
@@ -135,7 +141,7 @@ header {
   top: 0;
   z-index: 1000;
   background-color: var(--color-white);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 header .container {
@@ -146,12 +152,13 @@ header .container {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
   font-weight: 800;
   color: var(--color-dark);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: clamp(0.25rem, 1.5vw, 0.5rem);
 }
 
 .logo span {
@@ -170,7 +177,8 @@ header .container {
   transition: color var(--transition-fast);
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--color-primary);
 }
 
@@ -199,6 +207,7 @@ header .container {
   .mobile-only {
     display: none !important;
   }
+
   .mobile-sidebar {
     display: none !important;
   }
@@ -213,7 +222,8 @@ header .container {
 
 .mobile-sidebar {
   position: absolute;
-  top: 80px; /* height of header */
+  top: 80px;
+  /* height of header */
   left: 0;
   width: 100%;
   height: calc(100vh - 80px);
@@ -222,7 +232,7 @@ header .container {
   transform: translateX(-100%);
   transition: transform var(--transition-normal);
   z-index: 999;
-  box-shadow: 2px 10px 10px rgba(0,0,0,0.05);
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
 }
 
@@ -295,7 +305,7 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   transition: background var(--transition-fast);
 }
 
@@ -307,7 +317,7 @@ footer {
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #999999;
   font-size: 0.875rem;
 }
@@ -318,7 +328,9 @@ footer {
   color: var(--color-white);
 }
 
-.dark-section h1, .dark-section h2, .dark-section h3 {
+.dark-section h1,
+.dark-section h2,
+.dark-section h3 {
   color: var(--color-white);
 }
 
@@ -337,7 +349,7 @@ footer {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(17,17,17,0.6) 100%);
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(17, 17, 17, 0.6) 100%);
   z-index: 1;
 }
 
@@ -357,7 +369,7 @@ footer {
 .hero-content p {
   font-size: 1.25rem;
   margin-bottom: 2.5rem;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-buttons {
@@ -390,8 +402,13 @@ footer {
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 868px) {
@@ -399,18 +416,19 @@ footer {
     overflow: hidden;
     padding: 1rem 0;
   }
-  
+
   .trust-bar .container {
     padding: 0;
     max-width: none;
   }
-  
+
   .trust-bar-track {
     flex-wrap: nowrap;
     width: max-content;
     justify-content: flex-start;
     gap: 3rem;
-    padding-right: 3rem; /* maintain gap for seamless loop */
+    padding-right: 3rem;
+    /* maintain gap for seamless loop */
     animation: scrollMarquee 20s linear infinite;
   }
 }
@@ -426,27 +444,27 @@ footer {
   .section-padding {
     padding: 3rem 0;
   }
-  
+
   .grid-2-cols {
     grid-template-columns: 1fr;
     gap: 2.5rem;
     text-align: center;
   }
-  
+
   .grid-2-cols img {
     margin: 0 auto;
     max-height: 400px;
     object-fit: cover;
   }
-  
+
   .grid-2-cols .check-item {
     text-align: left;
   }
-  
+
   .hero {
     text-align: center;
   }
-  
+
   .hero-buttons {
     justify-content: center;
   }
@@ -469,6 +487,7 @@ footer {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
+
   .dashboard-header-flex {
     flex-direction: column;
     align-items: flex-start;

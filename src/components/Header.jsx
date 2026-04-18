@@ -18,7 +18,7 @@ const Header = () => {
     <header>
       <div className="container" style={{ position: 'relative' }}>
         <Link to="/" className="logo">
-          <img src={logoImg} alt="Burn It Out Logo" style={{ height: '64px', objectFit: 'contain' }} />
+          <img src={logoImg} alt="Burn It Out Logo" style={{ height: 'clamp(40px, 10vw, 64px)', objectFit: 'contain' }} />
           Burn IT Out<span>  Fitness</span>
         </Link>
 
